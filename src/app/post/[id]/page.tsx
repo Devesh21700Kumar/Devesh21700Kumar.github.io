@@ -1,25 +1,14 @@
 // src/app/post/[id]/page.tsx
+'use client'
 
-import { useRouter } from 'next/router'
-import { useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Post } from '@/types'
 
-export async function generateStaticParams() {
-    // Define all possible post IDs that should be generated at build time
-    const posts = [
-      { id: '1' },
-      { id: '2' }
-    ]
-    
-    return posts.map((post) => ({
-      id: post.id
-    }))
-  }
-
+// Move posts data to a separate file if not already done
 const posts: Post[] = [
   {
     id: 1,
@@ -57,12 +46,9 @@ This is just the beginning of my journey with RSC. More updates to come!`,
   }
 ]
 
-export default function PostPage() {
+export default function PostPage({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const params = useParams()
-  const post = posts.find(p => p.id === Number(params.id))
-
-  if (!post) return null
+  const post = posts.find(p => p.id === parseInt(params.id))
 
   const getMoodIcon = (mood: Post['mood']) => {
     switch (mood) {
@@ -70,7 +56,30 @@ export default function PostPage() {
       case 'confused': return <Brain className="text-red-400" />
       case 'accomplished': return <Code className="text-green-400" />
       case 'struggling': return <BookOpen className="text-blue-400" />
+      default: return null
     }
+  }
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] text-white p-4">
+        <div className="max-w-4xl mx-auto">
+          <Button 
+            variant="ghost" 
+            className="mb-8 text-gray-400 hover:text-white"
+            onClick={() => router.push('/')}
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Timeline
+          </Button>
+          <Card className="bg-gray-900 border-0">
+            <CardContent className="p-8">
+              <h1 className="text-xl font-bold">Post not found</h1>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -115,4 +124,11 @@ export default function PostPage() {
       </div>
     </motion.div>
   )
+}
+
+// This ensures pages are statically generated at build time
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id.toString()
+  }))
 }
