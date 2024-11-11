@@ -1,5 +1,4 @@
 // src/app/post/[id]/page.tsx
-'use client'
 
 import { useParams, useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
