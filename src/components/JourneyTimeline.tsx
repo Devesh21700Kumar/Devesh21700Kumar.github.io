@@ -48,26 +48,26 @@ export default function JourneyTimeline({ posts }: Props) {
                 </span>
               </div>
 
-              <h2 className="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">
+              <h2 className="text-xl font-bold mb-2 text-purple-300 group-hover:text-purple-400 transition-colors">
                 {post.title}
               </h2>
               <p className="text-gray-400 mb-4">{post.excerpt}</p>
 
-              <Button
-                variant="ghost"
-                className="hover:bg-purple-500/20 text-purple-300"
-              >
-                <Link href={`/post/${post.id}`} passHref>
-                  <Button>Read More</Button>
-                </Link>
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                  className="ml-2"
+              <Link href={`/post/${post.id}`} passHref>
+                <Button
+                  variant="ghost"
+                  className="hover:bg-purple-500/20 text-purple-300"
                 >
-                  →
-                </motion.span>
-              </Button>
+                  Read More
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    className="ml-2"
+                  >
+                    →
+                  </motion.span>
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </motion.div>

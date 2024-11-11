@@ -27,13 +27,13 @@ export function getMoodIcon(mood: Mood) {
     case "struggling":
       return <BookOpen className="text-blue-400" />;
     case "contemplative":
-      return <Eye className="text-purple-400" />; // Example icon for "contemplative"
+      return <Eye className="text-purple-400" />;
     case "happy":
       return <Sparkles className="text-pink-400" />;
     case "sad":
       return <Brain className="text-gray-400" />;
     default:
-      return null; // or a default icon if you prefer
+      return null;
   }
 }
 
@@ -47,5 +47,13 @@ export function getMoodText(mood: Post["mood"]) {
       return "Successfully implemented this concept!";
     case "struggling":
       return "Working through the challenges...";
+    case "contemplative":
+      return "Gave it a thought";
+    case "happy":
+      return "gg";
+    case "sad":
+      return "Talha Anjum time";
+    default:
+      return null;
   }
 }
