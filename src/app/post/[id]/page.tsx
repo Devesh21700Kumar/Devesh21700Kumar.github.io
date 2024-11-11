@@ -45,7 +45,7 @@ This is just the beginning of my journey with RSC. More updates to come!`,
   },
 ];
 
-export default function PostPage({ params }: { params: { id: string } }) {
+export default function PostPage({ params }: any ) {
   const post = posts.find((p) => p.id === parseInt(params.id));
 
   const getMoodIcon = (mood: Post["mood"]) => {
