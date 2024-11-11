@@ -8,6 +8,18 @@ import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Post } from '@/types'
 
+export async function generateStaticParams() {
+    // Define all possible post IDs that should be generated at build time
+    const posts = [
+      { id: '1' },
+      { id: '2' }
+    ]
+    
+    return posts.map((post) => ({
+      id: post.id
+    }))
+  }
+
 const posts: Post[] = [
   {
     id: 1,
