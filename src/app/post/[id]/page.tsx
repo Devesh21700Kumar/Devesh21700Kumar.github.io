@@ -1,6 +1,7 @@
 // src/app/post/[id]/page.tsx
 
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from 'lucide-react'
