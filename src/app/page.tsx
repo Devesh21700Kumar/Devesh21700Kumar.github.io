@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-object-type */ 
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 // src/app/page.tsx
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Search, Filter, Sparkles, Brain, Code, BookOpen } from 'lucide-react'
+import { useState } from "react";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search, Filter } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,55 +17,47 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { motion } from 'framer-motion'
-import { posts } from '@/data/posts'
-import type { Post } from '@/types'
-
-function getMoodIcon(mood: Post['mood']) {
-  switch (mood) {
-    case 'excited': return <Sparkles className="text-yellow-400" />
-    case 'confused': return <Brain className="text-red-400" />
-    case 'accomplished': return <Code className="text-green-400" />
-    case 'struggling': return <BookOpen className="text-blue-400" />
-    default: return null
-  }
-}
+} from "@/components/ui/dropdown-menu";
+import { motion } from "framer-motion";
+import { posts } from "@/data/posts";
+import { getMoodIcon } from "@/lib/utils";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState<string | null>(null)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
 
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = !categoryFilter || post.category === categoryFilter
-    return matchesSearch && matchesCategory
-  })
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = !categoryFilter || post.category === categoryFilter;
+    return matchesSearch && matchesCategory;
+  });
 
-  const categories = Array.from(new Set(posts.map(post => post.category)))
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white p-4">
       <div className="max-w-4xl mx-auto">
         <header className="mb-12 mt-8">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text"
           >
             Learning Journey
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="mt-4 text-gray-400 text-lg italic"
           >
-            &quot;Documenting my path to becoming a better engineer, one messy note at a time...&quot;
+            &quot;Documenting thoughts, one messy
+            note at a time...&quot;
           </motion.p>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -83,19 +75,28 @@ export default function Home() {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="bg-gray-900 hover:bg-gray-800">
+                <Button
+                  variant="outline"
+                  className="bg-gray-900 hover:bg-gray-800"
+                >
                   <Filter className="h-4 w-4 mr-2" />
-                  {categoryFilter || 'Filter'}
+                  {categoryFilter || "Filter"}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-gray-900 border-gray-800">
-                <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-white ">
+                  Categories
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setCategoryFilter(null)}>
+                <DropdownMenuItem
+                  className="text-white "
+                  onClick={() => setCategoryFilter(null)}
+                >
                   All
                 </DropdownMenuItem>
-                {categories.map(category => (
-                  <DropdownMenuItem 
+                {categories.map((category) => (
+                  <DropdownMenuItem
+                    className="text-white "
                     key={category}
                     onClick={() => setCategoryFilter(category)}
                   >
@@ -106,7 +107,7 @@ export default function Home() {
             </DropdownMenu>
           </motion.div>
         </header>
-        
+
         <div className="space-y-6">
           {filteredPosts.map((post, index) => (
             <motion.div
@@ -124,18 +125,18 @@ export default function Home() {
                       {post.category}
                     </span>
                   </div>
-                  
+
                   <h2 className="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-gray-400 mb-4">{post.excerpt}</p>
-                  
+
                   <Link href={`/post/${post.id}`}>
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       className="hover:bg-purple-500/20 text-purple-300"
                     >
-                      Read More 
+                      Read More
                       <motion.span
                         animate={{ x: [0, 4, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
@@ -152,5 +153,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

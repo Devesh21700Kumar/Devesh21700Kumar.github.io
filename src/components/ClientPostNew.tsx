@@ -1,36 +1,31 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import { useParams } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from "lucide-react"
-import { motion } from "framer-motion"
-import { posts } from "@/data/posts"
-import type { Post } from "@/types"
-
-function getMoodIcon(mood: Post['mood']) {
-  switch (mood) {
-    case 'excited': return <Sparkles className="text-yellow-400" />
-    case 'confused': return <Brain className="text-red-400" />
-    case 'accomplished': return <Code className="text-green-400" />
-    case 'struggling': return <BookOpen className="text-blue-400" />
-    default: return null
-  }
-}
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import { posts } from "@/data/posts";
+import { getMoodIcon } from "@/lib/utils";
 
 export default function ClientPost() {
-  const params = useParams()
-  const postId = typeof params?.id === 'string' ? params.id : Array.isArray(params?.id) ? params.id[0] : null
-  const post = posts.find((p) => p.id === parseInt(postId || ''))
+  const params = useParams();
+  const postId =
+    typeof params?.id === "string"
+      ? params.id
+      : Array.isArray(params?.id)
+      ? params.id[0]
+      : null;
+  const post = posts.find((p) => p.id === parseInt(postId || ""));
 
   if (!post) {
     return (
       <div className="min-h-screen bg-[#0A0A0A] text-white p-4">
         <div className="max-w-4xl mx-auto">
           <Link href="/">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className="mb-8 text-gray-400 hover:text-white group"
             >
               <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -44,7 +39,7 @@ export default function ClientPost() {
           </Card>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -55,8 +50,8 @@ export default function ClientPost() {
     >
       <div className="max-w-4xl mx-auto">
         <Link href="/">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="mb-8 text-gray-400 hover:text-white group"
           >
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -89,5 +84,5 @@ export default function ClientPost() {
         </Card>
       </div>
     </motion.div>
-  )
+  );
 }

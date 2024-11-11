@@ -1,48 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-object-type */ 
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 "use client";
 import { Post } from "@/types";
 import { motion } from "framer-motion";
-import { BookOpen, Sparkles, Brain, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { getMoodIcon, getMoodText } from "@/lib/utils";
 
 interface Props {
   posts: Post[];
 }
 
 export default function JourneyTimeline({ posts }: Props) {
-  const router = useRouter();
-
-  function getMoodIcon(mood: Post["mood"]) {
-    switch (mood) {
-      case "excited":
-        return <Sparkles className="text-yellow-400" />;
-      case "confused":
-        return <Brain className="text-red-400" />;
-      case "accomplished":
-        return <Code className="text-green-400" />;
-      case "struggling":
-        return <BookOpen className="text-blue-400" />;
-    }
-  }
-
-  function getMoodText(mood: Post["mood"]) {
-    switch (mood) {
-      case "excited":
-        return "Feeling excited about this discovery!";
-      case "confused":
-        return "Still wrapping my head around this...";
-      case "accomplished":
-        return "Successfully implemented this concept!";
-      case "struggling":
-        return "Working through the challenges...";
-    }
-  }
-
   return (
     <div className="relative">
       <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500" />
