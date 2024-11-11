@@ -22,15 +22,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export async function generateStaticParams() {
-  // These are all the post IDs we want to generate at build time
-  return [
-    { id: '1' },
-    { id: '2' }
-  ]
-}
-
-
 const posts: Post[] = [
   {
     id: 1,
