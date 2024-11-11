@@ -7,4 +7,3 @@ export interface Post {
     content: string
     mood: 'excited' | 'confused' | 'accomplished' | 'struggling'
   }
-  

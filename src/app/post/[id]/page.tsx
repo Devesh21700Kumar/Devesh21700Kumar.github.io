@@ -1,80 +1,51 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-object-type */ 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from "lucide-react";
-import { motion } from "framer-motion";
-import { Post } from "@/types";
+// src/app/page.tsx
+// src/app/post/[id]/page.tsx
+'use client'
 
-// Move posts data to a separate file if not already done
-const posts: Post[] = [
-  {
-    id: 1,
-    title: "Understanding React Server Components",
-    date: "2024-11-11",
-    category: "React",
-    excerpt:
-      "Today I dove deep into React Server Components and how they change the game...",
-    content: `# Understanding React Server Components
+import Link from "next/link"
+import { useParams } from 'next/navigation'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ArrowLeft, Sparkles, Brain, Code, BookOpen } from "lucide-react"
+import { motion } from "framer-motion"
+import { posts } from "@/data/posts"
+import type { Post } from "@/types"
 
-React Server Components represent a paradigm shift in how we build React applications. Here's what I learned today:
+function getMoodIcon(mood: Post['mood']) {
+  switch (mood) {
+    case 'excited': return <Sparkles className="text-yellow-400" />
+    case 'confused': return <Brain className="text-red-400" />
+    case 'accomplished': return <Code className="text-green-400" />
+    case 'struggling': return <BookOpen className="text-blue-400" />
+    default: return null
+  }
+}
 
-## Key Concepts
-- Server Components run only on the server
-- They can access server resources directly
-- Zero impact on bundle size
-- Automatic code splitting
+export interface PageProps {
+  params: {
+    id: string
+  }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-## Benefits
-1. Improved performance
-2. Better SEO
-3. Reduced client-side JavaScript
-4. Direct database access
-
-This is just the beginning of my journey with RSC. More updates to come!`,
-    mood: "excited",
-  },
-  {
-    id: 2,
-    title: "TypeScript Generic Constraints",
-    date: "2024-11-10",
-    category: "TypeScript",
-    excerpt: "Spent hours wrestling with TypeScript generics today...",
-    content: "Full content here...",
-    mood: "struggling",
-  },
-];
-
-export default function PostPage({ params }: any ) {
-  const post = posts.find((p) => p.id === parseInt(params.id));
-
-  const getMoodIcon = (mood: Post["mood"]) => {
-    switch (mood) {
-      case "excited":
-        return <Sparkles className="text-yellow-400" />;
-      case "confused":
-        return <Brain className="text-red-400" />;
-      case "accomplished":
-        return <Code className="text-green-400" />;
-      case "struggling":
-        return <BookOpen className="text-blue-400" />;
-      default:
-        return null;
-    }
-  };
+export default function PostPage() {
+  const params = useParams()
+  const postId = typeof params?.id === 'string' ? params.id : Array.isArray(params?.id) ? params.id[0] : null
+  const post = posts.find((p) => p.id === parseInt(postId || ''))
 
   if (!post) {
     return (
       <div className="min-h-screen bg-[#0A0A0A] text-white p-4">
         <div className="max-w-4xl mx-auto">
-          <Link href="/" passHref>
-            <Button
-              variant="ghost"
-              className="mb-8 text-gray-400 hover:text-white"
+          <Link href="/">
+            <Button 
+              variant="ghost" 
+              className="mb-8 text-gray-400 hover:text-white group"
             >
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Back to Timeline
             </Button>
           </Link>
@@ -85,7 +56,7 @@ export default function PostPage({ params }: any ) {
           </Card>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -95,12 +66,12 @@ export default function PostPage({ params }: any ) {
       className="min-h-screen bg-[#0A0A0A] text-white p-4"
     >
       <div className="max-w-4xl mx-auto">
-        <Link href="/" passHref>
-          <Button
-            variant="ghost"
-            className="mb-8 text-gray-400 hover:text-white"
+        <Link href="/">
+          <Button 
+            variant="ghost" 
+            className="mb-8 text-gray-400 hover:text-white group"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to Timeline
           </Button>
         </Link>
@@ -130,12 +101,5 @@ export default function PostPage({ params }: any ) {
         </Card>
       </div>
     </motion.div>
-  );
-}
-
-// This ensures pages are statically generated at build time
-export async function generateStaticParams() {
-  return posts.map((post) => ({
-    id: post.id.toString(),
-  }));
+  )
 }
