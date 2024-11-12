@@ -3,6 +3,102 @@ import type { Post } from "@/types";
 export const posts: Post[] = [
   {
     id: 1,
+    title: "Narcissism in Tech: A Developer's Introspection",
+    date: "2024-11-07",
+    category: "Industry Insights",
+    excerpt:
+      "Reflecting on the line between confidence and narcissism in the tech industry...",
+    content: `Today, I observed an interesting situation in a code review, prompting me to think about the thin line between confidence and narcissism in tech.
+        
+            The Confidence Spectrum:   
+            1). Healthy Confidence  
+               - Open to feedback and admits mistakes
+               - Encourages collaboration and knowledge-sharing
+        
+            2). Narcissistic Tendencies  
+               - Reluctant to document, creating knowledge silos
+               - Prefers complex solutions over accessible code
+        
+              Impact on Team Dynamics:   
+            Narcissism can lead to knowledge hoarding and reduced collaboration, impacting the entire team's morale and increasing technical debt.
+        
+              Steps to Foster a Healthy Environment:  
+            - Regular code reviews with open feedback
+            - Documentation as a standard requirement
+            - Encouraging humility through team retrospectives
+        
+            I’ve learned that great code doesn’t need an ego—it simply works and can be understood by the whole team.`,
+    mood: "contemplative",
+  },
+  {
+    id: 2,
+    title: "Mountain Trek: A Software Engineer's Perspective",
+    date: "2024-11-08",
+    category: "Life Experience",
+    excerpt:
+      "A trek with a 1000-meter elevation taught me life lessons that parallel engineering...",
+    content: `I recently went on a modest trek, with an elevation of about 1000 meters. While it was no extreme altitude, it was packed with insights that oddly mirror software engineering.
+        
+              Preparation is Key:   
+            Just as planning a major release requires thorough preparation, so does a trek.
+            - Research the terrain, test tools, and ensure team alignment
+        
+              Small Steps Lead to Big Goals:   
+            Much like tackling a complex project, a steady pace toward smaller milestones helped reach the peak without feeling overwhelmed.
+        
+              Resource Management:   
+            Trekking taught me the importance of managing resources like energy and time—similar to optimizing code for CPU and memory usage.
+        
+            It’s incredible how experiences outside of coding can bring new perspectives to our work. This trek reminded me that growth isn’t just in the destination but in the journey.`,
+    mood: "excited",
+  },
+  {
+    id: 3,
+    title: "Understanding Closures Through Real Examples",
+    date: "2024-11-09",
+    category: "JavaScript",
+    excerpt:
+      "Getting to the heart of closures with practical examples that just make sense...",
+    content: `Closures clicked for me years ago, but their flexibility still amazes me. This understanding has profoundly shaped how I approach structuring code. 
+        
+              Closures as Private Data:   
+            Closures allow us to encapsulate functionality, serving as an alternative to classes.
+            - Perfect for creating private variables, as in user session data or component state
+        
+              Closures in Factory Functions:   
+            Simplifies code when creating functions with pre-set variables or parameters.
+        
+              Event Handlers:   
+            Closure variables persist across events, which can be incredibly useful for user preferences, counters, or form state management.
+        
+            What made closures click for me was seeing them as functions with a “backpack” of context they carry along, ready to be used at a moment’s notice. This perspective has been foundational in writing clean, reusable code.`,
+    mood: "accomplished",
+  },
+  {
+    id: 4,
+    title: "Debounce vs Throttle: Real-world Applications",
+    date: "2024-11-10",
+    category: "JavaScript",
+    excerpt:
+      "Exploring the nuances of debounce and throttle in performance optimization...",
+    content: `Optimizing performance through debounce and throttle isn't new for me, but each time I revisit these concepts, there's a renewed appreciation. Recently, I implemented both in a project’s search component, and the differences were enlightening.
+    
+          Debounce:   Ideal for delaying actions until necessary
+        - Used it in a search input field to reduce API calls
+        - Dropped call count from 100+ to just 15 per session, lowering server load by 85%
+    
+          Throttling:   Best for consistent event handling
+        - Applied it to a scroll handler for infinite scrolling, smoothing out the user experience without spiking CPU usage
+    
+          Quick Tips:  
+        - Use debounce for cases where only the final action matters (e.g., search inputs)
+        - Use throttle for regular updates during user interaction (e.g., scroll or resize events)
+    
+        The optimization resulted in smoother UX and less resource strain. Reflecting on the nuances between these techniques always brings new insight into crafting a responsive user interface.`,
+    mood: "excited",
+  },
+  {
+    id: 5,
     title: "The Power of Self-Reflection in Engineering",
     date: "2024-11-11",
     category: "Personal Growth",
@@ -21,100 +117,31 @@ export const posts: Post[] = [
     This practice has strengthened my technical abilities and improved my team interactions. I now articulate ideas more clearly and am better at interpreting others' perspectives. Remember, speed in coding isn't everything—clarity and insight are often far more valuable.`,
     mood: "accomplished",
   },
+
   {
-    id: 2,
-    title: "Debounce vs Throttle: Real-world Applications",
-    date: "2024-11-10",
-    category: "JavaScript",
+    id: 6,
+    title: "The Importance of Social Branding in Career Growth",
+    date: "2024-11-12",
+    category: "Career Development",
     excerpt:
-      "Exploring the nuances of debounce and throttle in performance optimization...",
-    content: `Optimizing performance through debounce and throttle isn't new for me, but each time I revisit these concepts, there's a renewed appreciation. Recently, I implemented both in a project’s search component, and the differences were enlightening.
+      "Social branding has become more than just a trend; it's a powerful tool for career growth. Learn how to leverage your personal brand to open doors and build professional connections.",
+    content: `In today's digital age, social branding isn't just about having a LinkedIn profile—it's about creating a unique and consistent online presence that reflects who you are and what you bring to the table. Your personal brand is your professional fingerprint, and when crafted carefully, it can significantly boost your career opportunities.
 
-      Debounce:   Ideal for delaying actions until necessary
-    - Used it in a search input field to reduce API calls
-    - Dropped call count from 100+ to just 15 per session, lowering server load by 85%
+      Why Social Branding Matters:  
+    In an era where networking happens online as much as in person, social branding allows potential employers, collaborators, and clients to understand your expertise and values. By sharing relevant content, showcasing your skills, and engaging in industry conversations, you increase your visibility and credibility in your field.
 
-      Throttling:   Best for consistent event handling
-    - Applied it to a scroll handler for infinite scrolling, smoothing out the user experience without spiking CPU usage
+      Key Components of Social Branding:  
+    1. Consistency Across Platforms: Ensure your profiles across LinkedIn, Twitter, and even personal websites carry a cohesive message about your professional goals and expertise.
+    2. Content That Adds Value: Share insights, projects, and opinions related to your field. For instance, if you're in tech, writing about industry trends, projects, or coding tips can position you as a thought leader.
+    3. Engagement and Networking: Engage with posts, join groups, and network within your industry to build genuine relationships that could open up new opportunities.
 
-      Quick Tips:  
-    - Use debounce for cases where only the final action matters (e.g., search inputs)
-    - Use throttle for regular updates during user interaction (e.g., scroll or resize events)
+      Practical Tips to Get Started:  
+    - Define Your Niche: Identify the unique value you offer and the topics you’re passionate about.
+    - Optimize Your LinkedIn Profile: This includes a professional headline, summary, and relevant skills.
+    - Post Regularly: Share insights from your projects or learning experiences—your voice is a key part of your brand.
 
-    The optimization resulted in smoother UX and less resource strain. Reflecting on the nuances between these techniques always brings new insight into crafting a responsive user interface.`,
-    mood: "excited",
-  },
-  {
-    id: 3,
-    title: "Understanding Closures Through Real Examples",
-    date: "2024-11-09",
-    category: "JavaScript",
-    excerpt:
-      "Getting to the heart of closures with practical examples that just make sense...",
-    content: `Closures clicked for me years ago, but their flexibility still amazes me. This understanding has profoundly shaped how I approach structuring code. 
-
-      Closures as Private Data:   
-    Closures allow us to encapsulate functionality, serving as an alternative to classes.
-    - Perfect for creating private variables, as in user session data or component state
-
-      Closures in Factory Functions:   
-    Simplifies code when creating functions with pre-set variables or parameters.
-
-      Event Handlers:   
-    Closure variables persist across events, which can be incredibly useful for user preferences, counters, or form state management.
-
-    What made closures click for me was seeing them as functions with a “backpack” of context they carry along, ready to be used at a moment’s notice. This perspective has been foundational in writing clean, reusable code.`,
-    mood: "accomplished",
-  },
-  {
-    id: 4,
-    title: "Mountain Trek: A Software Engineer's Perspective",
-    date: "2024-11-08",
-    category: "Life Experience",
-    excerpt:
-      "A trek with a 1000-meter elevation taught me life lessons that parallel engineering...",
-    content: `I recently went on a modest trek, with an elevation of about 1000 meters. While it was no extreme altitude, it was packed with insights that oddly mirror software engineering.
-
-      Preparation is Key:   
-    Just as planning a major release requires thorough preparation, so does a trek.
-    - Research the terrain, test tools, and ensure team alignment
-
-      Small Steps Lead to Big Goals:   
-    Much like tackling a complex project, a steady pace toward smaller milestones helped reach the peak without feeling overwhelmed.
-
-      Resource Management:   
-    Trekking taught me the importance of managing resources like energy and time—similar to optimizing code for CPU and memory usage.
-
-    It’s incredible how experiences outside of coding can bring new perspectives to our work. This trek reminded me that growth isn’t just in the destination but in the journey.`,
-    mood: "excited",
-  },
-  {
-    id: 5,
-    title: "Narcissism in Tech: A Developer's Introspection",
-    date: "2024-11-07",
-    category: "Industry Insights",
-    excerpt:
-      "Reflecting on the line between confidence and narcissism in the tech industry...",
-    content: `Today, I observed an interesting situation in a code review, prompting me to think about the thin line between confidence and narcissism in tech.
-
-    The Confidence Spectrum:   
-    1). Healthy Confidence  
-       - Open to feedback and admits mistakes
-       - Encourages collaboration and knowledge-sharing
-
-    2). Narcissistic Tendencies  
-       - Reluctant to document, creating knowledge silos
-       - Prefers complex solutions over accessible code
-
-      Impact on Team Dynamics:   
-    Narcissism can lead to knowledge hoarding and reduced collaboration, impacting the entire team's morale and increasing technical debt.
-
-      Steps to Foster a Healthy Environment:  
-    - Regular code reviews with open feedback
-    - Documentation as a standard requirement
-    - Encouraging humility through team retrospectives
-
-    I’ve learned that great code doesn’t need an ego—it simply works and can be understood by the whole team.`,
+      Final Thoughts:  
+    Your social brand is an evolving project, growing as you gain more experience and insights. It's a long-term investment that, when nurtured, can lead to mentorship, job offers, or new ventures. Remember, branding is about authenticity—let your unique story shine through.`,
     mood: "contemplative",
   },
 ];

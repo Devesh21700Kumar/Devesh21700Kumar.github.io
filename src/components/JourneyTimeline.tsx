@@ -18,7 +18,7 @@ export default function JourneyTimeline({ posts }: Props) {
     <div className="relative">
       <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500" />
 
-      {posts.map((post, index) => (
+      {[...posts].reverse().map((post, index) => (
         <motion.div
           key={post.id}
           initial={{ opacity: 0, x: -50 }}
