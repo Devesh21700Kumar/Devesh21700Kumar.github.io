@@ -144,4 +144,23 @@ export const posts: Post[] = [
     Your social brand is an evolving project, growing as you gain more experience and insights. It's a long-term investment that, when nurtured, can lead to mentorship, job offers, or new ventures. Remember, branding is about authenticity—let your unique story shine through.`,
     mood: "contemplative",
   },
+  {
+    id: 7,
+    title: "Heavy work days",
+    date: "2024-11-13",
+    category: "Career Development",
+    excerpt: "Back hurting yet? Eyes heavy? Us bro us",
+    content: `On the busiest days, when the to-do list feels endless and time seems to vanish, it's easy to feel overwhelmed. 
+    I remember one particular week—it was like a marathon where every step revealed another hill to climb. Between back-to-back meetings, looming project deadlines, and the constant buzz of notifications, 
+    I barely had a moment to catch my breath. 
+
+    But I realized something crucial: instead of viewing each task as a mountain, I could break them down into smaller, manageable hills. 
+    I began to prioritize ruthlessly, focusing on the tasks that truly moved the needle. I’d wake up early to knock out the hardest tasks first, and 
+    I learned to lean on my teammates, sharing the load and celebrating even small wins together.
+    
+    What struck me most was that these intense periods taught me resilience and adaptability. When I looked back, 
+    I felt a sense of accomplishment that went beyond ticking off tasks—it was about knowing I could navigate the storm and come out stronger. So now, when the workload piles up, I remind myself that it’s temporary, 
+    and every challenge brings its own hidden strength, shaping me into someone who's ready for whatever comes next.`,
+    mood: "contemplative",
+  },
 ];
