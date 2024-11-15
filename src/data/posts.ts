@@ -163,4 +163,34 @@ export const posts: Post[] = [
     and every challenge brings its own hidden strength, shaping me into someone who's ready for whatever comes next.`,
     mood: "contemplative",
   },
+  {
+    id: 8,
+    title: "The Joy of Small Wins",
+    date: "2024-11-14",
+    category: "Happiness and Positivity",
+    excerpt: "Celebrating the little moments that make a big difference.",
+    content: `Today, I was reminded of the power of small wins. In the middle of a packed schedule, I took a moment to acknowledge the tasks I had completed—no matter how minor they seemed. 
+    Crossing off even the smallest items from my to-do list felt like progress, and that sense of accomplishment fueled my energy for the rest of the day.
+  
+    What stood out the most was how a simple pause to celebrate these small victories shifted my mindset. Instead of feeling overwhelmed by what was left to do, 
+    I felt motivated to tackle the rest with positivity. It's amazing how a little acknowledgment can turn a long day into a rewarding one.
+  
+    Days like these remind me that happiness isn’t just in the big moments—it’s in the small, everyday triumphs that keep us moving forward.`,
+    mood: "accomplished",
+  },
+  {
+    id: 9,
+    title: "Finding Positivity in the Ordinary",
+    date: "2024-11-15",
+    category: "Happiness and Positivity",
+    excerpt: "Looking for the silver lining in everyday life.",
+    content: `Yesterday, I decided to intentionally look for positivity in the ordinary moments of the day. Instead of rushing through tasks, 
+    I paused to enjoy a warm cup of tea, listened to my favorite song on repeat, and even smiled at the stranger who held the door open for me.
+  
+    These small acts made me realize how much joy we can find if we pay attention. Even during a hectic day, focusing on the good helped me feel more grounded and less overwhelmed. 
+    I also made a point to compliment a colleague on their work—it brought a smile to their face and brightened my mood too.
+  
+    It wasn’t a day of grand achievements, but it was a day filled with quiet happiness. Sometimes, that’s all we need to feel fulfilled.`,
+    mood: "happy",
+  },
 ];
