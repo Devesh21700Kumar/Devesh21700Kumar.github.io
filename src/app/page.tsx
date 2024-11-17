@@ -4,8 +4,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter } from "lucide-react";
@@ -19,20 +17,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { motion } from "framer-motion";
 import { posts } from "@/data/posts";
-import { getMoodIcon } from "@/lib/utils";
 import JourneyTimeline from "@/components/JourneyTimeline";
+import { Post } from "@/types";
+import { cn } from "@/lib/utils";
+import { useFilteredPosts } from "./hooks/useFllteredPosts";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
-
-  const filteredPosts = posts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !categoryFilter || post.category === categoryFilter;
-    return matchesSearch && matchesCategory;
-  });
+  const {
+    filteredPosts,
+    searchTerm,
+    setSearchTerm,
+    isSearching,
+    activeFilters,
+    setActiveFilters,
+    clearFilters,
+    totalResults,
+  } = useFilteredPosts(posts);
 
   const categories = Array.from(new Set(posts.map((post) => post.category)));
 
@@ -55,13 +55,11 @@ export default function Home() {
           >
             &quot;Documenting thoughts, one messy note at a time...&quot;
           </motion.p>
+        </header>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-8 flex gap-4"
-          >
+        <motion.div className="mt-8 space-y-4">
+          {/* Search and Filter Controls */}
+          <div className="flex gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
               <Input
@@ -70,45 +68,93 @@ export default function Home() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+              {isSearching && (
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                    className="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full"
+                  />
+                </div>
+              )}
             </div>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="bg-gray-900 hover:bg-gray-800"
+                  className={cn(
+                    "bg-gray-900 hover:bg-gray-800",
+                    activeFilters.category && "border-purple-500"
+                  )}
                 >
                   <Filter className="h-4 w-4 mr-2" />
-                  {categoryFilter || "Filter"}
+                  {activeFilters.category || "Filter"}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-gray-900 border-gray-800">
-                <DropdownMenuLabel className="text-white ">
+                <DropdownMenuLabel className="text-white">
                   Categories
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  className="text-white "
-                  onClick={() => setCategoryFilter(null)}
+                  className="text-white"
+                  onClick={() => setActiveFilters({ category: null })}
                 >
-                  All
+                  All Categories
                 </DropdownMenuItem>
                 {categories.map((category) => (
                   <DropdownMenuItem
-                    className="text-white "
                     key={category}
-                    onClick={() => setCategoryFilter(category)}
+                    className={cn(
+                      "text-white",
+                      activeFilters.category === category && "bg-purple-500/20"
+                    )}
+                    onClick={() => setActiveFilters({ category })}
                   >
                     {category}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-          </motion.div>
-        </header>
 
-        <div className="space-y-6">
-          <JourneyTimeline posts={filteredPosts} />
+            {(activeFilters.category || searchTerm) && (
+              <Button
+                variant="ghost"
+                className="text-gray-400 hover:text-white"
+                onClick={clearFilters}
+              >
+                Clear
+              </Button>
+            )}
+          </div>
+
+          {/* Results count */}
+          {(activeFilters.category || searchTerm) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-sm text-gray-400"
+            >
+              Found {totalResults} {totalResults === 1 ? "result" : "results"}
+              {activeFilters.category && ` in ${activeFilters.category}`}
+              {searchTerm && ` for "${searchTerm}"`}
+            </motion.div>
+          )}
+        </motion.div>
+
+        <div className="space-y-6 mt-8">
+          {filteredPosts.length > 0 ? (
+            <JourneyTimeline posts={filteredPosts} />
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-12 text-gray-400"
+            >
+              No posts found. Try adjusting your search or filters.
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
