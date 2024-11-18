@@ -248,7 +248,7 @@ export const posts: Post[] = [
     mood: "accomplished",
   },
   {
-    id: 11,
+    id: 12,
     title: "Deep work",
     date: "2024-11-18",
     category: "Career Development",
