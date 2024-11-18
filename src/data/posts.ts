@@ -252,8 +252,7 @@ export const posts: Post[] = [
     title: "Deep work",
     date: "2024-11-18",
     category: "Career Development",
-    excerpt:
-      "Deep Work: The Key to Fulfillment",
+    excerpt: "Deep Work: The Key to Fulfillment",
     content: `We live in a world of endless distractions, but the real magic happens in those uninterrupted moments of deep work.  
     
     Why It Matters:  
