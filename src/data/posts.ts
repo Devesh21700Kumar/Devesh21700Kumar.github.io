@@ -34,7 +34,7 @@ export const posts: Post[] = [
     id: 2,
     title: "Mountain Trek: A Software Engineer's Perspective",
     date: "2024-11-08",
-    category: "Life Experience",
+    category: "Personal Growth",
     excerpt:
       "A trek with a 1000-meter elevation taught me life lessons that parallel engineering...",
     content: `I recently went on a modest trek, with an elevation of about 1000 meters. While it was no extreme altitude, it was packed with insights that oddly mirror software engineering.
@@ -224,7 +224,7 @@ export const posts: Post[] = [
     id: 11,
     title: "Building Better Documentation Habits",
     date: "2024-11-17",
-    category: "Best Practices",
+    category: "Career Development",
     excerpt:
       "How changing my documentation approach transformed team collaboration...",
     content: `Documentation has always been that task we all know we should do better, but somehow it often falls to the bottom of our priority list. 
@@ -246,5 +246,28 @@ export const posts: Post[] = [
     Documentation isn't just about writing down steps—it's about sharing knowledge in a way that empowers others. 
     When done right, it becomes one of the most valuable contributions we can make to our team's success.`,
     mood: "accomplished",
+  },
+  {
+    id: 11,
+    title: "Deep work",
+    date: "2024-11-18",
+    category: "Career Development",
+    excerpt:
+      "Deep Work: The Key to Fulfillment",
+    content: `We live in a world of endless distractions, but the real magic happens in those uninterrupted moments of deep work.  
+    
+    Why It Matters:  
+    The ability to focus deeply on a task not only boosts productivity but also leads to a profound sense of accomplishment. When you give your full attention to meaningful work, it transforms from a chore into a **source of joy and pride.  
+    
+    My Approach to Deep Work:  
+    - Set Boundaries:** Block time for focused work, free from distractions.  
+    - Simplify Goals:** Tackle one challenging task at a time.  
+    - Celebrate Progress:** Reflect on how small wins add up.  
+    
+    The Outcome:  
+    The satisfaction of completing something meaningful fosters a happy, fulfilled mood. It's not just about finishing tasks—it's about reconnecting with the passion that drew you to the work in the first place.  
+    
+    When you protect your time for deep work, you're not just improving output—you're investing in your own **well-being and happiness.`,
+    mood: "happy",
   },
 ];
