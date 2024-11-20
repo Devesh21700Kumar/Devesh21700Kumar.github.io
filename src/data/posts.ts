@@ -269,4 +269,42 @@ export const posts: Post[] = [
     When you protect your time for deep work, you're not just improving output—you're investing in your own **well-being and happiness.`,
     mood: "happy",
   },
+  {
+    id: 13,
+    title: "Embracing Gratitude",
+    date: "2024-11-19",
+    category: "Personal Growth",
+    excerpt: "How practicing gratitude transformed my mindset...",
+    content: `Gratitude shifts our focus from what we lack to what we have.  
+    Adopting a daily gratitude practice has transformed my life and relationships.  
+  
+    My Practices:  
+    - Morning Reflections: List three things I’m thankful for.  
+    - Express Gratitude: Say “thank you” often and genuinely.  
+    - Celebrate Wins: Acknowledge small victories.  
+  
+    The Outcome:  
+    Gratitude has strengthened my connections and made me more resilient. 
+    It reminds me there’s always something to appreciate.`,
+    mood: "contemplative",
+  },
+  {
+    id: 14,
+    title: "The Power of Consistency",
+    date: "2024-11-20",
+    category: "Career Development",
+    excerpt: "How small consistent efforts lead to big results...",
+    content: `Consistency is often overlooked, but it’s the key to long-term success.  
+    Small, repeated actions compound over time to create meaningful change.  
+  
+    My Approach:  
+    - Build Small Habits: Focus on one manageable change at a time.  
+    - Track Progress: Use simple tools to stay accountable.  
+    - Stay Patient: Results come with time and persistence.  
+  
+    The Outcome:  
+    By staying consistent, I’ve achieved goals that once seemed impossible. 
+    It’s proof that steady effort beats short bursts of intensity every time.`,
+    mood: "accomplished",
+  },
 ];
